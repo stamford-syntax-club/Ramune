@@ -84,6 +84,21 @@ For any queries, feedback, or support, reach out to us on our Discord server or 
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
+
+---
+## For the Infrastructure Team:
+
+```bash
+git clone [...] .
+cd into the folder
+# make the settings.json file
+dotnet build --configuration Release
+cd bin/Release/net6.0/
+tmux new -s ramune # creates new tmux session (but you don't have to do this everytime, since the session will persist)
+# to attach, tmux a -t ramune
+dotnet Ramune.dll
+```
+
 ---
 
 Happy coding, and enjoy the Stamford Syntax Club's bot experience! 💻🎉🚀
