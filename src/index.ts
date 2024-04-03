@@ -1,6 +1,6 @@
 import "./lib/setup";
 
-import { LogLevel, SapphireClient } from "@sapphire/framework";
+import { ApplicationCommandRegistries, LogLevel, SapphireClient } from "@sapphire/framework";
 import { GatewayIntentBits } from "discord.js";
 
 const client = new SapphireClient({
@@ -17,6 +17,10 @@ const client = new SapphireClient({
 	],
 	loadMessageCommandListeners: true
 });
+
+// Register the guilds where the commands will be registered.
+// TODO: make this only in dev mode
+ApplicationCommandRegistries.setDefaultGuildIds(["1132282965368520816"]);
 
 const main = async () => {
 	try {
