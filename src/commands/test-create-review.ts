@@ -1,5 +1,6 @@
 import { ApplyOptions } from "@sapphire/decorators";
 import { Command } from "@sapphire/framework";
+import { PermissionFlagsBits } from "discord.js";
 import { sendReviewToReviewsChannel } from "../lib/send-review-to-reviews-channel";
 
 @ApplyOptions<Command.Options>({
@@ -18,6 +19,7 @@ export class TestCreateReviewCommand extends Command {
 			builder // This comment is here to stop prettier from formatting the builder
 				.setName(this.name)
 				.setDescription(this.description)
+				.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 		);
 	}
 
