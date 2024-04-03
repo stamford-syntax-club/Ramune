@@ -1,44 +1,43 @@
-# Ramune + Sapphire
+# Ramune + Sapphire 🚀
 
-This is the bot that sends a message to the channel when a review is submitted on the [CourseCompose](https://github.com/stamford-syntax-club/course-compose) website.
-It will read a Kafka topic and send a message to the channel when a review is submitted.
+This is the bot that sends a message to the channel when a review is submitted on the [CourseCompose](https://github.com/stamford-syntax-club/course-compose) website. 
+It will read a Kafka topic and send a message to the channel when a review is submitted. 📣
 
-The bot is using the [sapphire framework][sapphire], and written in TypeScript.
+Built using the [Sapphire framework](https://github.com/sapphiredev/framework) and TypeScript.
 
-## How to use?
+## Getting Started 🛠
 
-### Prerequisite
+### Prerequisites 📋
 
-You will need to have [Bun](https://bun.sh/) installed. You can find the installation instructions [here](https://bun.sh/docs/installation).
+Before diving in, make sure you have [Bun](https://bun.sh/) on your machine. Not sure how? Follow the [installation guide](https://bun.sh/docs/installation) to get set up.
 
-Then, you will need to clone the reposity, and install the dependencies using the following command:
+Next up, clone the repository to your local environment. To install all necessary dependencies, simply run:
 ```sh
 bun install
 ```
 
-### Development
+### Development Setup 🖥
 
-The bot can be run with `bun run dev` or `bun run watch:start` to watch the files and automatically restart your bot.
-We recommend using `bun run dev` as the bot constantly restarting and trying to connect to the gateway can cause rate limits.
+To run our bot for development, use:
+```sh
+bun run dev
+```
+Alternatively, `bun run watch:start` will watch for file changes, restarting the bot automatically when something is changed. However, to avoid rate limits, sticking to `bun run dev` is recommended.
 
-### Production
-You will need to update the env file with NODE_ENV=production in order to run in production mode.
+### Shifting to Production 🚀
 
-Following that, run the following command to build the bot:
+Switch to production mode by setting `NODE_ENV=production` in your environment file.
+
+Start the building process with:
 ```sh
 bun run build
 ```
-
-After building the bot, you can run the bot using:
-```
+Once built, run the bot using:
+```sh
 node dist/index.js
 ```
+Note: For production, we bypass Bun's runtime due to its growing pains and limitations. It's an area under improvement but for now, this workaround keeps us moving forward, especially on Windows environments.
 
-Keep in mind that we're not using the bun runtime to run the bot in production due to its limitations. It is still not exactly production ready, and in the dev environments, especially on Windows, there are still issues.
+## License 📜
 
-## License
-
-Dedicated to the public domain via the [Unlicense], courtesy of the Sapphire Community and its contributors.
-
-[sapphire]: https://github.com/sapphiredev/framework
-[unlicense]: https://github.com/sapphiredev/examples/blob/main/LICENSE.md
+Embracing open-source spirit, **Ramune + Sapphire** is generously dedicated to the public domain under the [Unlicense](https://github.com/sapphiredev/examples/blob/main/LICENSE.md).
