@@ -1,5 +1,6 @@
 import { InteractionHandler, InteractionHandlerTypes, container } from "@sapphire/framework";
-import { userMention, type ButtonInteraction } from "discord.js";
+import { type ButtonInteraction } from "discord.js";
+import { getMemberMention } from "../lib/review-utils";
 
 export class ApproveReviewButtonHandler extends InteractionHandler {
 	public constructor(ctx: InteractionHandler.LoaderContext, options: InteractionHandler.Options) {
@@ -18,7 +19,7 @@ export class ApproveReviewButtonHandler extends InteractionHandler {
 
 		const firstEmbedTitle = originalMessage.embeds[0].title;
 		if (!firstEmbedTitle) {
-			container.logger.warn("No title found in the first embed of the message.");
+			container.logger.error("No title found in the first embed of the message.");
 			await interaction.reply({
 				content: "An error occurred while trying to approve the review.",
 				ephemeral: true
@@ -29,12 +30,11 @@ export class ApproveReviewButtonHandler extends InteractionHandler {
 		const reviewId = firstEmbedTitle.split(" ")[1].replace("#", "");
 		const courseCode = firstEmbedTitle.split(" ")[2].replace("(", "").replace(")", "");
 
-		const member = interaction.member;
-		let memberMention = member ? userMention(member?.user.id) : "UNKNOWN";
+		let memberMention = getMemberMention(interaction.member);
 
 		await originalMessage.delete();
 		await interaction.reply({
-			content: `Review \`#${reviewId}\` for course \`${courseCode}\` approved by ${memberMention}.`
+			content: `Review \`#${reviewId}\` for course \`${courseCode}\` approved by ${memberMention}`
 		});
 	}
 }

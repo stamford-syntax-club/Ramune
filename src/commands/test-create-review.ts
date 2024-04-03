@@ -29,6 +29,6 @@ export class TestCreateReviewCommand extends Command {
 			reviewDescription: "This is a test review."
 		});
 
-		await interaction.reply("Ok");
+		await interaction.reply("Test review created:");
 	}
 }

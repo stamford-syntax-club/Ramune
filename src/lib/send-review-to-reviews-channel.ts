@@ -36,15 +36,11 @@ export async function sendReviewToReviewsChannel(review: ReviewType) {
 		.setLabel("Reject")
 		.setStyle(ButtonStyle.Danger);
 
-	const testButton = new ButtonBuilder()
-		.setCustomId("my-awesome-button")
-		.setLabel("Awesome Button")
-		.setStyle(ButtonStyle.Secondary);
-
-	const row = new ActionRowBuilder<ButtonBuilder>().addComponents(approveReview, rejectReview, testButton);
+	const row = new ActionRowBuilder<ButtonBuilder>().addComponents(approveReview, rejectReview);
 
 	reviewsChannel.send({
-		content: `${reviewerRole ? roleMention(reviewerRole.id) + "a" : "A"} new review has been submitted.`,
+		// TODO: add a util function to get role mentions
+		content: `${reviewerRole ? roleMention(reviewerRole.id) + " a" : " A"} new review has been submitted.`,
 		embeds: [reviewEmbed],
 		components: [row]
 	});
