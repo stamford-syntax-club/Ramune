@@ -1,4 +1,4 @@
-import { InteractionHandler, InteractionHandlerTypes, container } from "@sapphire/framework";
+import { InteractionHandler, InteractionHandlerTypes } from "@sapphire/framework";
 import type { ButtonInteraction } from "discord.js";
 
 export class ButtonHandler extends InteractionHandler {
@@ -10,10 +10,7 @@ export class ButtonHandler extends InteractionHandler {
 	}
 
 	public override parse(interaction: ButtonInteraction) {
-		container.logger.info("Button interaction received!", interaction.toJSON());
-		if (interaction.customId !== "my-awesome-button") return this.none();
-
-		return this.some();
+		return interaction.customId === "my-awesome-button" ? this.some() : this.none();
 	}
 
 	public async run(interaction: ButtonInteraction) {
