@@ -44,7 +44,7 @@ export async function sendReviewToReviewsChannel(review: ReviewType) {
 	const row = new ActionRowBuilder<ButtonBuilder>().addComponents(approveReview, rejectReview, testButton);
 
 	reviewsChannel.send({
-		content: `${reviewerRole ? roleMention(reviewerRole.id) + "a" : "A"} a new review has been submitted.`,
+		content: `${reviewerRole ? roleMention(reviewerRole.id) + "a" : "A"} new review has been submitted.`,
 		embeds: [reviewEmbed],
 		components: [row]
 	});
