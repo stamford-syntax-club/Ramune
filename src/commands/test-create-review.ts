@@ -25,7 +25,7 @@ export class TestCreateReviewCommand extends Command {
 		await sendReviewToReviewsChannel({
 			reviewId: "123",
 			courseCode: "CSC123",
-			rating: 5,
+			rating: 4.5,
 			reviewDescription: "This is a test review."
 		});
 
