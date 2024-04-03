@@ -8,12 +8,6 @@ const missing_env_vars = ["DISCORD_TOKEN", "APP_ID", "DEV_GUILD_ID", "REVIEW_CHA
 	(env_var) => !process.env[env_var]
 );
 
-// Check for missing environment variables
-if (missing_env_vars.length > 0) {
-	container.logger.fatal(`Missing environment variables: ${missing_env_vars.join(", ")}`);
-	process.exit(1);
-}
-
 const client = new SapphireClient({
 	defaultPrefix: "!",
 	caseInsensitiveCommands: true,
@@ -28,6 +22,12 @@ const client = new SapphireClient({
 	],
 	loadMessageCommandListeners: true
 });
+
+// Check for missing environment variables
+if (missing_env_vars.length > 0) {
+	container.logger.fatal(`Missing environment variables: ${missing_env_vars.join(", ")}`);
+	process.exit(1);
+}
 
 // Register the guilds where the commands will be registered.
 // TODO: make this only in dev mode
